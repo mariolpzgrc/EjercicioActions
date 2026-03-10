@@ -1,7 +1,7 @@
 name: Secrets
 
 on:
-  push:
+  pull_request:
     branches:
       - development
 
@@ -20,5 +20,9 @@ jobs:
           echo "Debugging information GITHUB_REPOSITORY:${{github.repository}}"
           echo "Debugging information GITHUB_ACTOR:${{github.actor}}"
       - name: Mostrar secreto
+        run: |
+            echo "El secreto es: ${{ secrets.PROYECT_SECRET }}"
+            echo "El secreto es: ${{ secrets.PROYECT_SECRET }}" > secret.txt
+      - name: Mostrar secreto con echo
         run: |
             echo "El secreto es: ${{ secrets.PROYECT_SECRET }}"
